@@ -28,7 +28,46 @@ $(".search-button").click(function (event) {
       displayWeatherNow(data);
     });
 
+  function displayForecastData(data) {
+    for (let index = 1; index < data.list.length; index += 8) {
+      console.log(data.list[index]);
 
+      
+      const cardContainer = $('<div class="myCard">');
+      const dateDiv = $("<div>Date: " + data.list[index].dt_txt + "</div>");
+
+      var icon = data.list[index].weather[0].icon;
+      let imgURL = `http://openweathermap.org/img/wn/${icon}@2x.png`
+      let img = $("<img>").attr("src", imgURL);
+
+      const tempDiv = $(
+        "<div>Temp: " + data.list[index].main.temp + " °C</div>"
+      );
+      const windDiv = $(
+        "<div>Wind: " + data.list[index].wind.speed + " metre/sec</div>"
+      );
+      const humidDiv = $(
+        "<div>Humidity: " + data.list[index].main.humidity + " %</div>"
+      );
+
+      cardContainer.append(dateDiv);
+      cardContainer.append(img);
+      cardContainer.append(tempDiv);
+      cardContainer.append(windDiv);
+      cardContainer.append(humidDiv);
+      forecastContainer.append(cardContainer);
+      
+      
+
+    }
+    const text = $("<h2>").text("5-Day Forecast:");
+    fiveDays.prepend(text);
+  }
+
+  function displayWeatherNow(data) {
+    // in here you;ll do the data for the current day
+
+  }
   
 });
 
