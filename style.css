@@ -1,0 +1,39 @@
+#form-heading {
+    font-weight: bold;
+}
+
+
+.weather-header {
+    background-color: #4158D0;
+    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    
+}
+
+.myCard {
+    background-color: #8137f8;
+    margin: 2px;
+    width: 12rem;
+    line-height: 2em;
+    min-height: 200px;
+    color: white;
+  }
+
+#search-input {
+    width: 95%;
+    margin-bottom: 20px;
+    
+}
+
+#search-button {
+    background-color: #8137f8;
+    color: white;
+    width: 300px;
+    margin-left: 0%;
+}
+
+.today {
+    background-color: rgb(221, 156, 247);
+    border-radius: initial;
+    padding: 2em;
+}
+
