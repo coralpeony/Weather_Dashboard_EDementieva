@@ -18,6 +18,16 @@ $(".search-button").click(function (event) {
     return;
   }
 
+  fetch(weather)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+      displayForecastData(data);
+      displayWeatherNow(data);
+    });
+
 
   
 });
