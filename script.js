@@ -66,7 +66,31 @@ $(".search-button").click(function (event) {
 
   function displayWeatherNow(data) {
     // in here you;ll do the data for the current day
+    const todayCardDiv = $('<div class="today">');
+    const cityName = $("<h2>" + data.city.name + "</h2>");
+    const todayDateDiv = $("<div>Date: " + data.list[0].dt_txt + "</div>");
+    
+    var todayIcon = data.list[0].weather[0].icon;
+    let todayImgURL = `http://openweathermap.org/img/wn/${todayIcon}@2x.png`
+    let todayImg = $("<img>").attr("src", todayImgURL);
 
+    const todayTempDiv = $(
+      "<div>Temp: " + data.list[0].main.temp + " °C</div>"
+    );
+    const todayWindDiv = $(
+      "<div>Wind: " + data.list[0].wind.speed + " metre/sec</div>"
+    );
+    const todayHumidDiv = $(
+      "<div>Humidity: " + data.list[0].main.humidity + " %</div>"
+    );
+
+    todayCardDiv.append(cityName);
+    todayCardDiv.append(todayDateDiv);
+    todayCardDiv.append(todayImg);
+    todayCardDiv.append(todayTempDiv);
+    todayCardDiv.append(todayWindDiv);
+    todayCardDiv.append(todayHumidDiv);
+    todayContainer.append(todayCardDiv);
   }
   
 });
