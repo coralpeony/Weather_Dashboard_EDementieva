@@ -1,4 +1,4 @@
-# Weather Dashboard_EDementieva
+# Weather_Dashboard_EDementieva
 
 ## Description
 
@@ -45,7 +45,7 @@ When a user clicks on a city in the search history they are again presented with
 
 ![Daily_Planner_App](./assets/images/screenshot.png)
 
-https://coralpeony.github.io/Daily_Planner_App_EDementieva/
+https://coralpeony.github.io/Weather_Dashboard_EDementieva/
 
 ## Credits
 
