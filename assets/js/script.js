@@ -9,7 +9,7 @@ $(".search-button").click(function (event) {
   const queryParam = $("#search-input").val();
 
   const weather =
-    "http://api.openweathermap.org/data/2.5/forecast?q=" +
+    "https://api.openweathermap.org/data/2.5/forecast?q=" +
     queryParam +
     "&units=metric&appid=" +
     apiKey;
@@ -37,7 +37,7 @@ $(".search-button").click(function (event) {
       const dateDiv = $("<div>Date: " + data.list[index].dt_txt + "</div>");
 
       const icon = data.list[index].weather[0].icon;
-      const imgURL = `http://openweathermap.org/img/wn/${icon}@2x.png`
+      const imgURL = `https://openweathermap.org/img/wn/${icon}@2x.png`
       const img = $("<img>").attr("src", imgURL);
 
       const tempDiv = $(
@@ -70,7 +70,7 @@ $(".search-button").click(function (event) {
     const todayDateDiv = $("<div>Date: " + data.list[0].dt_txt + "</div>");
     
     const todayIcon = data.list[0].weather[0].icon;
-    const todayImgURL = `http://openweathermap.org/img/wn/${todayIcon}@2x.png`
+    const todayImgURL = `https://openweathermap.org/img/wn/${todayIcon}@2x.png`
     const todayImg = $("<img>").attr("src", todayImgURL);
 
     const todayTempDiv = $(
