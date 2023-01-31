@@ -6,9 +6,9 @@ const apiKey = "8cd1ced871abc4840d6ef09b2a8f9080";
 $(".search-button").click(function (event) {
   event.preventDefault();
   
-  var queryParam = $("#search-input").val();
+  const queryParam = $("#search-input").val();
 
-  var weather =
+  const weather =
     "http://api.openweathermap.org/data/2.5/forecast?q=" +
     queryParam +
     "&units=metric&appid=" +
@@ -36,9 +36,9 @@ $(".search-button").click(function (event) {
       const cardContainer = $('<div class="myCard">');
       const dateDiv = $("<div>Date: " + data.list[index].dt_txt + "</div>");
 
-      var icon = data.list[index].weather[0].icon;
-      let imgURL = `http://openweathermap.org/img/wn/${icon}@2x.png`
-      let img = $("<img>").attr("src", imgURL);
+      const icon = data.list[index].weather[0].icon;
+      const imgURL = `http://openweathermap.org/img/wn/${icon}@2x.png`
+      const img = $("<img>").attr("src", imgURL);
 
       const tempDiv = $(
         "<div>Temp: " + data.list[index].main.temp + " °C</div>"
@@ -56,23 +56,22 @@ $(".search-button").click(function (event) {
       cardContainer.append(windDiv);
       cardContainer.append(humidDiv);
       forecastContainer.append(cardContainer);
-      
-      
-
+    
     }
+
     const text = $("<h2>").text("5-Day Forecast:");
     fiveDays.prepend(text);
   }
 
   function displayWeatherNow(data) {
-    // in here you;ll do the data for the current day
+    // here is the data for the current day
     const todayCardDiv = $('<div class="today">');
     const cityName = $("<h2>" + data.city.name + "</h2>");
     const todayDateDiv = $("<div>Date: " + data.list[0].dt_txt + "</div>");
     
-    var todayIcon = data.list[0].weather[0].icon;
-    let todayImgURL = `http://openweathermap.org/img/wn/${todayIcon}@2x.png`
-    let todayImg = $("<img>").attr("src", todayImgURL);
+    const todayIcon = data.list[0].weather[0].icon;
+    const todayImgURL = `http://openweathermap.org/img/wn/${todayIcon}@2x.png`
+    const todayImg = $("<img>").attr("src", todayImgURL);
 
     const todayTempDiv = $(
       "<div>Temp: " + data.list[0].main.temp + " °C</div>"
