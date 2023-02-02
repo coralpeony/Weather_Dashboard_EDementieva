@@ -123,3 +123,29 @@ function savedToLS(data, cityName) {
     history.append(button)
     
     }
+
+
+  // stored city name and the data are linked
+
+  function getHistory(event) {
+    const queryParam = event.target.textContent
+    const weather =
+      "https://api.openweathermap.org/data/2.5/forecast?q=" +
+      queryParam +
+      "&units=metric&appid=" +
+      apiKey;
+  
+    if (!queryParam) {
+      return;
+    }
+  
+    fetch(weather)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data);
+        displayForecastData(data);
+        displayWeatherNow(data);
+      });
+  }
