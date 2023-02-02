@@ -115,3 +115,11 @@ function savedToLS(data, cityName) {
   
   }
   
+  //a button is generated for the searched city
+
+  function createButton (cityName) {
+    const button = $('<button class="button">' + cityName + "</button>");
+    button.click(getHistory)
+    history.append(button)
+    
+    }
