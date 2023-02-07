@@ -27,9 +27,10 @@ When a user views the current weather conditions for that city they are presente
 
     The temperature
 
+    The wind speed
+
     The humidity
 
-    The wind speed
 
 When a user views future weather conditions for that city they are presented with a 5-day forecast that displays:
 
@@ -38,6 +39,8 @@ When a user views future weather conditions for that city they are presented wit
     An icon representation of weather conditions
 
     The temperature
+
+    The wind speed
 
     The humidity
 

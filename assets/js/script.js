@@ -7,34 +7,50 @@ const history = $("#history");
 
 // pulling data from weatherAPI when the search button is clicked
 
-$(".search-button").click(function (event) {
-  event.preventDefault();
+$(".search-button").click(getInput);
+
+
+function getCity(queryParam) {
   
+    const weather =
+      "https://api.openweathermap.org/data/2.5/forecast?q=" +
+      queryParam +
+      "&units=metric&appid=" +
+      apiKey;
+  
+    if (!queryParam) {
+      return;
+    }
+  
+    fetch(weather)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data);
+        displayForecastData(data);
+        displayWeatherNow(data);
+        savedToLS(data, queryParam);
+       
+      });
+}
+
+//splitting the click event function in to smaller chunks to reuse 
+function getInput(event) {
+  event.preventDefault()
+  // const exists inside the function only, can be named anything
   const queryParam = $("#search-input").val();
+console.log(queryParam)
+getCity(queryParam)
 
-  const weather =
-    "https://api.openweathermap.org/data/2.5/forecast?q=" +
-    queryParam +
-    "&units=metric&appid=" +
-    apiKey;
+}
 
-  if (!queryParam) {
-    return;
-  }
-
-  fetch(weather)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data);
-      displayForecastData(data);
-      displayWeatherNow(data);
-      savedToLS(data, queryParam);
-      createButton(data.city.name);
-    });
-});
-
+function getHistory(event) {
+  const queryParam = event.target.textContent
+  console.log(queryParam)
+  getCity(queryParam)
+}
+/////
 
 // display 5 day forecast 
 
@@ -107,12 +123,16 @@ function displayWeatherNow(data) {
 
 // saved to local storage 
 
-function savedToLS(data, cityName) {
+function savedToLS(data) {
   const cities = JSON.parse(localStorage.getItem("weather")) || []
-  console.log(data.city.name, cityName);
+  /*console.log(data.city.name, cityName);*/
+  for (i = 0; i < cities.length; i ++) {
+   if (data.city.name === cities[i]) return;
+  }
+
   cities.push(data.city.name);
   localStorage.setItem("weather", JSON.stringify(cities))
-  
+  createButton(data.city.name);
   }
   
   //a button is generated for the searched city
@@ -124,12 +144,26 @@ function savedToLS(data, cityName) {
     
     }
 
+    // a function to load/display buttons on the page-get from local storage and create a button
+function loadFromLS() {
+  /*console.log("loading")*/
+  const citiesOther = JSON.parse(localStorage.getItem("weather")) || []
+  console.log(citiesOther)
+  for (i = 0; i < citiesOther.length; i++) {
+    console.log(citiesOther[i])
+    createButton(citiesOther[i])
+  }
+  
+}
+
+loadFromLS()
 
   // stored city name and the data are linked
 
-  function getHistory(event) {
+  /*function getHistory(event) {
     const queryParam = event.target.textContent
-    const weather =
+
+  /*  const weather =
       "https://api.openweathermap.org/data/2.5/forecast?q=" +
       queryParam +
       "&units=metric&appid=" +
@@ -148,4 +182,4 @@ function savedToLS(data, cityName) {
         displayForecastData(data);
         displayWeatherNow(data);
       });
-  }
+  }*/
